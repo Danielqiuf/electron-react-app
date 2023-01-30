@@ -1,5 +1,10 @@
-import { app, BrowserWindow } from 'electron'
+const { app, BrowserWindow } = require('electron')
+const isDev = require('electron-is-dev')
+const path = require('path')
 
+const devUrl = 'http://localhost:3000/'
+
+const localUrl = `file://${path.resolve(__dirname, '../../app.asar/build/index.html')}`
 let mainWindow
 
 const createWindow = () => {
@@ -11,7 +16,7 @@ const createWindow = () => {
         backgroundColor: '#1e1e1e'
     })
     mainWindow.webContents.openDevTools()
-    mainWindow.loadURL('http://localhost:3000/')
+    mainWindow.loadURL(isDev ? devUrl : localUrl)
     mainWindow.on('closed', () => {
         mainWindow = null
     })
