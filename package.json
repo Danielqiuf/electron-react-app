@@ -11,10 +11,15 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.4",
     "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "electron": "^22.1.0",
+    "electron-builder": "^23.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,5 +44,25 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "build": {
+    "appId": "test.app",
+    "productName": "React桌面应用test",
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "files": [
+      "./build/index.html"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    },
+    "extends": null
   }
 }
